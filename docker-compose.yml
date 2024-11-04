@@ -1,23 +1,20 @@
 services:
 
-  api:
+  # Movies API
+  movies-api:
     image: doconnor/movies-api:1.0
     container_name: movies-api
     ports:
       - '9000:9000'
-
-  # Movies API
-  movies-api:
-    image: doconnor/movies-api:1.0
-    ports:
-      - "5000:5000"  # Movies API port
     environment:
-      MONGODB_URI: "mongodb://mongo:27017"
-      REDIS_URI: "redis://redis:6379"
-      ENABLE_WRITING_HANDLERS: "false"
+      MONGODB_URI: mongodb://admin:password@mongo:27017/movies
+      REDIS_URI: redis://redis
+      ENABLE_WRITING_HANDLERS: 'false'
     depends_on:
       - mongo
       - redis
+    networks:
+      - backend
 
   # MongoDB
   mongo:
