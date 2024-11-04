@@ -14,7 +14,8 @@ services:
       - mongo
       - redis
     networks:
-      - backend
+      - net1
+      - net2
 
   # MongoDB
   mongo:
@@ -26,7 +27,8 @@ services:
     volumes:
       - mongo_data:/data/db
     networks:
-      - backend
+      - net2
+      - net3
 
   # Mongo Express
   mongo-express:
@@ -41,18 +43,22 @@ services:
     depends_on:
       - mongo
     networks:
-      - backend
+      - net3
 
   # Redis
   redis:
     image: redis:alpine
     container_name: redis
     networks: 
-      - backend
+      - net1
 
 networks:
-  backend:
-    driver: bridge  
+  net1:
+    driver: bridge
+  net2:
+    driver: bridge
+  net3:
+    driver: bridge
 
 volumes:
   mongo_data:
