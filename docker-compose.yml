@@ -5,3 +5,16 @@ services:
     container_name: movies-api
     ports:
       - '9000:9000'
+
+  # Movies API
+  movies-api:
+    image: doconnor/movies-api:1.0
+    ports:
+      - "5000:5000"  # Movies API port
+    environment:
+      MONGODB_URI: "mongodb://mongo:27017"
+      REDIS_URI: "redis://redis:6379"
+      ENABLE_WRITING_HANDLERS: "false"
+    depends_on:
+      - mongo
+      - redis
