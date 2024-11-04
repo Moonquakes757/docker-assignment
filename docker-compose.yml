@@ -29,3 +29,9 @@ services:
       - mongo_data:/data/db
     ports:
       - "27017:27017"  # MongoDB port
+
+  # Redis
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"  # Redis port
