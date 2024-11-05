@@ -1,7 +1,4 @@
-redis ip: 172.28.0.2
-movies-api ip: 172.29.0.3
-mongo ip: 172.29.0.2
-mongo-express ip: 172.30.0.3
-
-
-
+redis ip: 172.28.0.2  net1 
+movies-api ip: 172.28.0.4  net1
+mongo ip: 172.29.0.2  net1 net2
+mongo-express ip: 172.29.0.3  net2
